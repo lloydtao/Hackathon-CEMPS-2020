@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, ROUND, TRUE
+from tkinter import Tk, Canvas, Button, Frame, PhotoImage, ROUND, TRUE
 from tkinter.colorchooser import askcolor
 
 
@@ -7,7 +7,12 @@ class Paint:
         self.root = Tk()
 
         self.c = Canvas(self.root, bg="white", width=320, height=320)
-        self.c.grid(row=1, columnspan=5)
+        self.c.grid(row=1, columnspan=1)
+
+        self.color_button = Button(self.root, text="color", command=self.choose_color)
+        img = PhotoImage(file="button-colour.gif")
+        self.color_button.grid(row=0, column=0)
+        self.color_button.config(image=img)
 
         self.setup()
         self.root.mainloop()
@@ -22,6 +27,9 @@ class Paint:
 
         self.c.bind("<B1-Motion>", self.paint)
         self.c.bind("<ButtonRelease-1>", self.reset)
+
+    def choose_color(self):
+        self.color = askcolor(color=self.color)[1]
 
     def paint(self, event):
         paint_color = "white" if self.eraser_on else self.color
