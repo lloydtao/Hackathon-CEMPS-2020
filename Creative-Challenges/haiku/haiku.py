@@ -1,4 +1,8 @@
-""" Hackathon - Poetry (Haiku) """
+""" Hackathon - Poetry (Haiku)
+
+This script uses NLP in order to count syllables.
+Make sure to run **setup.py** in order to download NLP dataset.
+"""
 
 from random import sample, choice
 from datetime import datetime
